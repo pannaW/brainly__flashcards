@@ -1,0 +1,26 @@
+{
+  "name": "brainly__internship-challange",
+  "version": "1.0.0",
+  "description": "internship challange 2018",
+  "private": true,
+  "author": "Wiktoria Lucarz",
+  "license": "ISC",
+  "scripts": {
+    "build": "webpack",
+    "build-css": "node-sass --include-path scss src/sass/screen.scss   dist/stylesheets/screen.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "node-sass": "^4.9.0",
+    "nodemon": "^1.17.4",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}

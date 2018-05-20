@@ -1,0 +1,65 @@
+@import "partials/variables";
+
+.hidden { display:none; overflow: hidden;}
+.l-wrap { margin:0 auto; }
+* { box-sizing: border-box;}
+/* Base styles */
+
+.sg-layout h2 { color:$peachSecondary;}
+.layout__body { background-color:$white;}
+
+/* Layout */
+
+.sg-layout__container {background-color:inherit;}
+.sg-layout__content {@extend .l-wrap;}
+
+/* Header */
+.sg-header__container {background-color: $mintPrimary;}
+.sg-header-primary {padding-bottom: 5px;}
+
+/* Card */
+.sg-content-box__content { margin:15px 0;}
+
+.sg-content-box__content p{ margin: 10px 0;}
+.content-box__button { margin:10px 0;}
+.content-box__content--question { font-size: 1.4em;}
+
+/* Progress bars */
+
+.progress-bars {
+    width:75%;
+    margin:35px auto 0;
+    
+    &::after{
+        content:"";
+        clear:both;
+        display: table;
+    }
+}
+
+.l-progress-bar {
+    width:100%;
+    &:first-child {padding-bottom: 25px; }
+    
+    @media (min-width:568px){
+        width:50%;
+        float:left; 
+        &:first-child {padding-bottom: 0;}
+    }  
+}
+
+.progress-bar {
+    width: 185px;
+    margin:0 auto;   
+}
+
+.progress-bar__container {
+    background-color: $graySecondaryLight;
+}
+
+.progress-bar__bar {
+    height:5px;
+    margin-bottom: 5px;
+    &--questions { background-color: $graySecondary; }
+    &--mistakes { background-color: $peachPrimary; }
+}
