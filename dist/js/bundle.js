@@ -83,132 +83,117 @@
 
 var _quiz = __webpack_require__(/*! ./quiz */ "./src/js/quiz.js");
 
-var _question = __webpack_require__(/*! ./question */ "./src/js/question.js");
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var endpoint = 'https://gist.githubusercontent.com/vergilius/6d869a7448e405cb52d782120b77b82c/raw/e75dc7c19b918a9f0f5684595899dba2e5ad4f43/history-flashcards.json';
+(function () {
+	var endpoint = 'https://gist.githubusercontent.com/vergilius/6d869a7448e405cb52d782120b77b82c/raw/e75dc7c19b918a9f0f5684595899dba2e5ad4f43/history-flashcards.json';
 
-var cardContent = document.querySelector('#cardContent');
-var progressBars = document.querySelectorAll('.jsProgressBar');
-var questionsBar = document.querySelector('#questionsBar');
-var questionsLabel = document.querySelector('#questionsLabel');
-var mistakesBar = document.querySelector('#mistakesBar');
-var mistakesLabel = document.querySelector('#mistakesLabel');
-var btnStart = document.querySelector('#btnStart');
-var btnAnswers = document.querySelectorAll('.jsBtnAnswer');
+	var cardContent = document.querySelector('#cardContent');
+	var progressBars = document.querySelectorAll('.jsProgressBar');
+	var questionsBar = document.querySelector('#questionsBar');
+	var questionsLabel = document.querySelector('#questionsLabel');
+	var mistakesBar = document.querySelector('#mistakesBar');
+	var mistakesLabel = document.querySelector('#mistakesLabel');
+	var btnStart = document.querySelector('#btnStart');
+	var btnAnswers = document.querySelectorAll('.jsBtnAnswer');
 
-var initialQuestionsLength = 0;
-var quiz = new Object();
+	var initialQuestionsLength = 0;
+	var quiz = new Object();
 
-function showAnswers() {
-    [].concat(_toConsumableArray(btnAnswers)).forEach(function (btn) {
-        var val = parseInt(btn.dataset.value);
-        btn.innerHTML = quiz.currentQuestion.answers[val].answer;
-    });
-}
+	function showAnswers() {
+		[].concat(_toConsumableArray(btnAnswers)).forEach(function (btn) {
+			var val = parseInt(btn.dataset.value);
+			btn.innerHTML = quiz.currentQuestion.answers[val].answer;
+		});
+	}
 
-function showProgress() {
+	function showProgress() {
+		questionsBar.style.width = 100 * (quiz.questions.length / initialQuestionsLength) + '%';
+		questionsLabel.innerHTML = quiz.questions.length + ' questions left';
+		mistakesBar.style.width = quiz.mistakes * 2.5 + '%';
+		mistakesLabel.innerHTML = quiz.mistakes + ' mistakes made';
+	}
 
-    questionsBar.style.width = 100 * (quiz.questions.length / initialQuestionsLength) + '%';
-    questionsLabel.innerHTML = quiz.questions.length + ' questions left';
+	function submitAnswerEvents() {
+		[].concat(_toConsumableArray(btnAnswers)).forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				var val = parseInt(btn.dataset.value);
+				quiz.guess(val);
+				play();
+			});
+		});
+	}
 
-    mistakesBar.style.width = quiz.mistakes * 2.5 + '%';
-    mistakesLabel.innerHTML = quiz.mistakes + ' mistakes made';
-}
+	function renderQuizView() {
+		var elems = [].concat(_toConsumableArray(btnAnswers), _toConsumableArray(progressBars));
+		[].concat(_toConsumableArray(elems)).forEach(function (btn) {
+			return btn.classList.remove('hidden');
+		});
 
-function submitAnswerEvents() {
-    [].concat(_toConsumableArray(btnAnswers)).forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var val = parseInt(btn.dataset.value);
-            quiz.guess(val);
-            play();
-        });
-    });
-}
+		initialQuestionsLength = quiz.questions.length;
 
-function renderQuizView() {
-    [].concat(_toConsumableArray(btnAnswers)).forEach(function (btn) {
-        return btn.classList.remove('hidden');
-    });
+		btnStart.classList.add('hidden');
+		cardContent.classList.add('content-box__content--question');
+	}
 
-    [].concat(_toConsumableArray(progressBars)).forEach(function (bar) {
-        return bar.classList.remove('hidden');
-    });
+	function renderEndQuizView() {
+		[].concat(_toConsumableArray(btnAnswers)).forEach(function (btn) {
+			return btn.classList.add('hidden');
+		});
 
-    initialQuestionsLength = quiz.questions.length;
+		showResult();
 
-    btnStart.classList.add('hidden');
+		btnStart.classList.remove('hidden');
+		btnStart.innerHTML = 'Try again!';
 
-    cardContent.classList.add('content-box__content--question');
-}
+		btnStart.removeEventListener('click', start);
+		btnStart.addEventListener('click', function () {
+			location.reload();
+		});
 
-function renderEndQuizView() {
-    [].concat(_toConsumableArray(btnAnswers)).forEach(function (btn) {
-        return btn.classList.add('hidden');
-    });
+		cardContent.classList.remove('content-box__content--question');
+		[].concat(_toConsumableArray(progressBars)).forEach(function (bar) {
+			return bar.classList.add('hidden');
+		});
+	}
 
-    showResult();
+	function showResult() {
+		var text = !quiz.mistakes ? 'Wow! Perfect score!' : quiz.mistakes < 0.5 * initialQuestionsLength ? 'Pretty good! I\'m sure you will nail the next round!' : 'Oh. Don\'t worry. Next time will be better for sure!';
 
-    btnStart.classList.remove('hidden');
-    btnStart.innerHTML = "Try again!";
+		cardContent.innerHTML = '<p> ' + text + ' </p><h3> Summary </h3><p> You\'ve answered <span class="sg-text sg-text--emphasised"> ' + initialQuestionsLength + ' questions </span> in <span class="sg-text sg-text--emphasised"> ' + quiz.turns + ' whops</span>.</p><p>That means, on the way you\'ve made <span class="sg-text sg-text--peach sg-text--emphasised">' + quiz.mistakes + ' mistakes.</span></p>';
+	}
 
-    btnStart.removeEventListener('click', start);
-    btnStart.addEventListener('click', function () {
-        location.reload();
-    });
+	function showCard() {
+		// show question    
+		cardContent.innerHTML = quiz.currentQuestion.question;
+		// show quiz progress
+		showProgress();
+		// show answers
+		showAnswers();
+	}
 
-    cardContent.classList.remove('content-box__content--question');
+	function play() {
+		if (quiz.isEnded()) {
+			renderEndQuizView();
+		} else {
+			showCard();
+		}
+	}
 
-    [].concat(_toConsumableArray(progressBars)).forEach(function (bar) {
-        return bar.classList.add('hidden');
-    });
-}
+	function start() {
+		renderQuizView();
+		submitAnswerEvents();
+		play();
+	}
 
-function showResult() {
+	fetch(endpoint).then(function (resp) {
+		return resp.json();
+	}).then(function (data) {
 
-    var text = !quiz.mistakes ? "Wow! Perfect score!" : quiz.mistakes < 0.5 * initialQuestionsLength ? "Pretty good! I'm sure you will nail the next round!" : "Oh. Don't worry. Next time will be better for sure!";
-
-    cardContent.innerHTML = '<p> ' + text + ' </p>\n                            <h3> Summary </h3> \n                            <p> \n                                You\'ve answered <span class="sg-text sg-text--emphasised"> ' + initialQuestionsLength + ' questions </span> in <span class="sg-text sg-text--emphasised"> ' + quiz.turns + ' whops</span>.\n                            </p> \n\n                            <p> \n                                That means, on the way you\'ve made <span class="sg-text sg-text--peach sg-text--emphasised">' + quiz.mistakes + ' mistakes.</span> \n                            </p>';
-}
-
-function showCard() {
-
-    // show question    
-    cardContent.innerHTML = quiz.currentQuestion.question;
-
-    // show quiz progress
-    showProgress();
-
-    // show answers
-    showAnswers();
-}
-
-function play() {
-    if (quiz.isEnded()) {
-        renderEndQuizView();
-    } else {
-        showCard();
-    }
-}
-
-function start() {
-    renderQuizView();
-    submitAnswerEvents();
-    play();
-}
-
-document.addEventListener("DOMContentLoaded", function (event) {
-
-    fetch(endpoint).then(function (resp) {
-        return resp.json();
-    }).then(function (data) {
-        data = JSON.parse(JSON.stringify(data));
-        quiz = new _quiz.Quiz(data);
-
-        btnStart.addEventListener('click', start);
-    });
-});
+		quiz = new _quiz.Quiz(data);
+		btnStart.addEventListener('click', start);
+	});
+})();
 
 /***/ }),
 

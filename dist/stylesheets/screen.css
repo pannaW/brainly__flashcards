@@ -2,36 +2,34 @@
   display: none;
   overflow: hidden; }
 
-.l-wrap, .sg-layout__content {
+.l-wrap, .layout__content {
   margin: 0 auto; }
 
 * {
   box-sizing: border-box; }
 
-/* Base styles */
-.sg-layout h2 {
+/* Layout */
+.layout h2 {
   color: #ffb3ae; }
 
 .layout__body {
   background-color: #fff; }
 
-/* Layout */
-.sg-layout__container {
+.layout__container {
   background-color: inherit; }
 
 /* Header */
-.sg-header__container {
+.header__container {
   background-color: #53cf92; }
 
-.sg-header-primary {
+.header-primary {
   padding-bottom: 5px; }
 
 /* Card */
-.sg-content-box__content {
+.content-box__content {
   margin: 15px 0; }
-
-.sg-content-box__content p {
-  margin: 10px 0; }
+  .content-box__content p {
+    margin: 10px 0; }
 
 .content-box__button {
   margin: 10px 0; }
@@ -40,14 +38,6 @@
   font-size: 1.4em; }
 
 /* Progress bars */
-.progress-bars {
-  width: 75%;
-  margin: 35px auto 0; }
-  .progress-bars::after {
-    content: "";
-    clear: both;
-    display: table; }
-
 .l-progress-bar {
   width: 100%; }
   .l-progress-bar:first-child {
@@ -59,17 +49,23 @@
       .l-progress-bar:first-child {
         padding-bottom: 0; } }
 
+.progress-bars {
+  width: 75%;
+  margin: 35px auto 0; }
+  .progress-bars::after {
+    content: "";
+    clear: both;
+    display: table; }
+
 .progress-bar {
   width: 185px;
   margin: 0 auto; }
-
-.progress-bar__container {
-  background-color: #e1e8ed; }
-
-.progress-bar__bar {
-  height: 5px;
-  margin-bottom: 5px; }
-  .progress-bar__bar--questions {
-    background-color: #9fa6b5; }
-  .progress-bar__bar--mistakes {
-    background-color: #ff796b; }
+  .progress-bar__container {
+    background-color: #e1e8ed; }
+  .progress-bar__bar {
+    height: 5px;
+    margin-bottom: 5px; }
+    .progress-bar__bar--questions {
+      background-color: #9fa6b5; }
+    .progress-bar__bar--mistakes {
+      background-color: #ff796b; }

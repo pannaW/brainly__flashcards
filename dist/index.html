@@ -1,173 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Flashcards | Test your knowledge </title>
-    
+
     <!--    Brainly style components-->
-    <link href="https://styleguide.brainly.com/134.2.1/style-guide.css" rel="stylesheet"/>
-    
+    <link href="https://styleguide.brainly.com/134.2.1/style-guide.css" rel="stylesheet" />
+
     <!--    Additional styles  -->
     <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 </head>
-    
+
 <body>
     <!-- layout -->
-    <div class="sg-layout">
-        
+    <div class="sg-layout layout">
+
         <!-- layout__header -->
         <header class="sg-header sg-header--fixed">
-            <div class="sg-header__container">
-                  <div class="sg-header__content">
+            <div class="sg-header__container header__container">
+                <div class="sg-header__content">
                     <div class="sg-header__left">
-                      <a href="#" class="sg-home-button">
+                        <a href="#" class="sg-home-button">
                         <img class="sg-home-button__logo-small" src="https://styleguide.brainly.com/images/logos/brainly-mobile-426ef8718f.svg">
                         <img class="sg-home-button__logo-big" src="https://styleguide.brainly.com/images/logos/brainly-761d75d6ea.svg">
                       </a>
                     </div>
                     <div class="sg-header__middle">
-                        <h1 class="sg-header-primary sg-header-primary--small sg-text-bit--light"><a class="sg-link--unstyled" href="index.html">
+                        <h1 class="sg-header-primary header-primary sg-header-primary--small sg-text-bit--light"><a class="sg-link--unstyled" href="index.html">
                             Flashcards.</a>
-                      </h1>
+                        </h1>
                     </div>
-                  </div>  
                 </div>
-        </header> <!-- .layout__header -->
+            </div>
+        </header>
+        <!-- .layout__header -->
 
 
         <!-- layout__body -->
         <div class="layout__body">
-           
+
             <!-- layout__content -->
-            <main class="sg-layout__container">
-                <div class="sg-layout__content">
+            <main class="sg-layout__container layout__container">
+                <div class="sg-layout__content layout__content">
 
                     <!-- card -->
                     <div class="sg-toplayer sg-toplayer--lead">
                         <div class="sg-toplayer__wrapper">
-                          <div class="sg-content-box">
+                            <div class="sg-content-box">
 
-                           <!-- card__header -->
-                            <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large sg-text sg-text--to-center">
+                                <!-- card__header -->
+                                <div class="sg-content-box__content content-box__content sg-content-box__content--spaced-bottom-large sg-text sg-text--to-center">
 
-                                <h2 class="sg-header-primary">Flashcards </h2>
-                                <p class="sg-header-secondary"> test your knowledge! </p>
+                                    <h2 class="sg-header-primary">Flashcards </h2>
+                                    <p class="sg-header-secondary"> test your knowledge! </p>
 
-                            </div><!-- .card__header -->
+                                </div>
+                                <!-- .card__header -->
 
-                            <!-- separator -->
-                            <div class="sg-horizontal-separator sg-horizontal-separator--short-spaced"></div> <!-- .separator --> 
-                            
-                            <!-- card__body -->
-                            <div class="content-box__body">
-                              
-                               <!-- card__content -->
-                                <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large">
+                                <!-- separator -->
+                                <div class="sg-horizontal-separator sg-horizontal-separator--short-spaced"></div>
+                                <!-- .separator -->
 
-                                    <div class="sg-text sg-text--standout sg-text--to-center">
-                                        <p id="cardContent">
-                                          Are you looking for a tool to revise your knowledge while having fun at the same time? Perfect! Then you've just found it!  
-                                         Come and check how much have you learnt!  
-                                        </p>
-                                        
-                                        
+                                <!-- card__body -->
+                                <div class="content-box__body">
+
+                                    <!-- card__content -->
+                                    <div class="sg-content-box__content content-box__content sg-content-box__content--spaced-bottom-large">
+
+                                        <div class="sg-text sg-text--standout sg-text--to-center">
+                                            <p id="cardContent">
+                                                Are you looking for a tool to revise your knowledge while having fun at the same time? Perfect! Then you've just found it! Come and check how much have you learnt!
+                                            </p>
+
+
+                                        </div>
+
                                     </div>
+                                    <!-- .card__content -->
 
-                                </div><!-- .card__content -->
+                                    <!-- card__actions -->
+                                    <div class="sg-content-box__actions sg-actions-list sg-actions-list--centered">
 
-                                <!-- card__actions -->
-                                <div class="sg-content-box__actions sg-actions-list sg-actions-list--centered">
-                                  
-                                   <!-- card__button -->
-                                    <div class="sg-actions-list__hole sg-actions-list__hole--spaced-small actions-list__button">
-                                       
-                                        <button id="btnStart" class="sg-button-primary content-box__button">
+                                        <!-- card__button -->
+                                        <div class="sg-actions-list__hole sg-actions-list__hole--spaced-small actions-list__button">
+
+                                            <button id="btnStart" class="sg-button-primary content-box__button">
                                             Let's get starting!
-                                        </button>  
-                                    </div> <!-- .card__button -->
+                                        </button>
+                                        </div>
+                                        <!-- .card__button -->
 
-                                     <!-- card__button -->
-                                    <div class="sg-actions-list__hole sg-actions-list__hole--spaced-small actions-list__button">
-                                        <button class="sg-button-primary content-box__button jsBtnAnswer hidden" data-value="0">
+                                        <!-- card__button -->
+                                        <div class="sg-actions-list__hole sg-actions-list__hole--spaced-small actions-list__button">
+                                            <button class="sg-button-primary content-box__button jsBtnAnswer hidden" data-value="0">
 
-                                        </button>  
-                                    </div> <!-- .card__button -->
+                                        </button>
+                                        </div>
+                                        <!-- .card__button -->
 
-                                     <!-- card__button -->
-                                    <div class="sg-actions-list__hole sg-actions-list__hole--spaced-small actions-list__button">
-                                        <button class="sg-button-primary content-box__button jsBtnAnswer hidden" data-value="1">
+                                        <!-- card__button -->
+                                        <div class="sg-actions-list__hole sg-actions-list__hole--spaced-small actions-list__button">
+                                            <button class="sg-button-primary content-box__button jsBtnAnswer hidden" data-value="1">
 
-                                        </button> 
-                                    </div> <!-- .card__button -->
-                                    
-                                </div> <!-- .card__actions --> 
-                            </div>  <!-- .card__body -->
+                                        </button>
+                                        </div>
+                                        <!-- .card__button -->
 
-                            <!-- separator -->
-                            <div class="sg-horizontal-separator sg-horizontal-separator--short-spaced"></div> <!-- .separator --> 
+                                    </div>
+                                    <!-- .card__actions -->
+                                </div>
+                                <!-- .card__body -->
 
-                            <!-- card__footer -->
-                            <div class="sg-content-box__footer">
-                                 
-                                 <!-- progress-bars -->
-                                 <div class="content-box__content progress-bars">
-                                    
-                                    <!-- questions-bar -->
-                                     <div class="l-progress-bar">
-                                        <div class="progress-bar jsProgressBar hidden">
-                                            <!-- questions-bar__bar -->
-                                            <div class="progress-bar__container">
-                                                <div id="questionsBar"  class="progress-bar__bar progress-bar__bar--questions"></div>
-                                            </div> <!-- .questions-bar__bar -->  
+                                <!-- separator -->
+                                <div class="sg-horizontal-separator sg-horizontal-separator--short-spaced"></div>
+                                <!-- .separator -->
 
-                                            <!-- questions-bar__label -->
-                                            <div id="questionsLabel" class="progress-bar__label sg-text sg-text--to-center"> </div> <!-- .questions-bar__label -->
-                                        </div> 
-                                     </div> <!-- .questions-bar -->
-                                    
-                                     <!-- mistakes-bar -->
-                                     <div class="l-progress-bar">
-                                        <div class="progress-bar jsProgressBar hidden">
-                                             <!-- mistakes-bar__bar -->
-                                            <div class="progress-bar__container">
-                                                <div id="mistakesBar"  class="progress-bar__bar progress-bar__bar--mistakes"></div>     
-                                            </div><!-- .mistakes-bar__bar -->
+                                <!-- card__footer -->
+                                <div class="sg-content-box__footer">
 
-                                            <!-- mistakes-bar__label -->
-                                            <div id="mistakesLabel" class="progress-bar__label sg-text sg-text--peach sg-text--to-center"></div><!-- .mistakes-bar__label -->
+                                    <!-- progress-bars -->
+                                    <div class="content-box__content progress-bars">
 
-                                        </div> 
-                                    </div> <!-- .mistakes bar -->
-                                    
-                                </div> <!-- .progress-bars -->
+                                        <!-- questions-bar -->
+                                        <div class="l-progress-bar">
+                                            <div class="progress-bar jsProgressBar hidden">
+                                                <!-- questions-bar__bar -->
+                                                <div class="progress-bar__container">
+                                                    <div id="questionsBar" class="progress-bar__bar progress-bar__bar--questions"></div>
+                                                </div>
+                                                <!-- .questions-bar__bar -->
 
-                            </div> <!-- .card__footer -->
+                                                <!-- questions-bar__label -->
+                                                <div id="questionsLabel" class="progress-bar__label sg-text sg-text--to-center"> </div>
+                                                <!-- .questions-bar__label -->
+                                            </div>
+                                        </div>
+                                        <!-- .questions-bar -->
 
-                          </div>
+                                        <!-- mistakes-bar -->
+                                        <div class="l-progress-bar">
+                                            <div class="progress-bar jsProgressBar hidden">
+                                                <!-- mistakes-bar__bar -->
+                                                <div class="progress-bar__container">
+                                                    <div id="mistakesBar" class="progress-bar__bar progress-bar__bar--mistakes"></div>
+                                                </div>
+                                                <!-- .mistakes-bar__bar -->
+
+                                                <!-- mistakes-bar__label -->
+                                                <div id="mistakesLabel" class="progress-bar__label sg-text sg-text--peach sg-text--to-center"></div>
+                                                <!-- .mistakes-bar__label -->
+
+                                            </div>
+                                        </div>
+                                        <!-- .mistakes bar -->
+
+                                    </div>
+                                    <!-- .progress-bars -->
+
+                                </div>
+                                <!-- .card__footer -->
+
+                            </div>
                         </div>
-                      </div> <!-- .card -->
+                    </div>
+                    <!-- .card -->
 
                 </div>
-            </main> <!-- .layout__content -->
-            
+            </main>
+            <!-- .layout__content -->
+
             <!-- layout__footer -->
-            <div class="sg-layout__footer"> <!-- footer -->
-        <div class="sg-footer">
-          <div class="sg-footer__container">
-            <span class="sg-text sg-text--small">
+            <div class="sg-layout__footer">
+                <!-- footer -->
+                <div class="sg-footer">
+                    <div class="sg-footer__container">
+                        <span class="sg-text sg-text--small">
                 Copyright &copy;2018 Wiktoria Łucarz | Assets <a class="sg-link sg-link--mint" href="https://github.com/brainly/style-guide"> Brainly Style Guide </a> 
-            </span>  
-          </div>
-        </div> 
-      </div>  <!-- .layout__footer -->
-       
-        </div> <!-- .layout__body -->
-        
-    </div> <!-- .layout -->
+            </span>
+                    </div>
+                </div>
+            </div>
+            <!-- .layout__footer -->
 
-<!-- scripts-->
-<script src="js/bundle.js"></script>
+        </div>
+        <!-- .layout__body -->
 
+    </div>
+    <!-- .layout -->
+
+    <!-- scripts-->
+    <script src="js/bundle.js"></script>
 </body>
+
 </html>
