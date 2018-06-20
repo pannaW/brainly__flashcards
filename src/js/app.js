@@ -2,7 +2,6 @@ import { Quiz } from './quiz';
 
 (function() {
 	const endpoint = 'https://gist.githubusercontent.com/vergilius/6d869a7448e405cb52d782120b77b82c/raw/e75dc7c19b918a9f0f5684595899dba2e5ad4f43/history-flashcards.json';
-
 	const cardContent = document.querySelector('#cardContent');
 	const progressBars = document.querySelectorAll('.jsProgressBar');
 	const questionsBar = document.querySelector('#questionsBar');
@@ -68,17 +67,23 @@ import { Quiz } from './quiz';
 
 	function showResult(){
 		const text = !quiz.mistakes ? 'Wow! Perfect score!' : 
-        (quiz.mistakes < 0.5 * initialQuestionsLength) ? 'Pretty good! I\'m sure you will nail the next round!': 'Oh. Don\'t worry. Next time will be better for sure!';
+        	(quiz.mistakes < 0.5 * initialQuestionsLength) ? 
+		'Pretty good! I\'m sure you will nail the next round!': 
+		'Oh. Don\'t worry. Next time will be better for sure!';
         
-		cardContent.innerHTML = `<p> ${text} </p><h3> Summary </h3><p> You've answered <span class="sg-text sg-text--emphasised"> ${initialQuestionsLength} questions </span> in <span class="sg-text sg-text--emphasised"> ${quiz.turns} whops</span>.</p><p>That means, on the way you've made <span class="sg-text sg-text--peach sg-text--emphasised">${quiz.mistakes} mistakes.</span></p>`;
+		cardContent.innerHTML = `<p> ${text} </p><h3> Summary </h3><p> You've answered 
+		<span class="sg-text sg-text--emphasised"> ${initialQuestionsLength} questions </span>
+		in <span class="sg-text sg-text--emphasised"> ${quiz.turns} whops</span>.</p><p>That means,
+		on the way you've made <span class="sg-text sg-text--peach sg-text--emphasised">${quiz.mistakes} 
+		mistakes.</span></p>`;
 	}
 
 	function showCard(){
-    // show question    
+    		// show question    
 		cardContent.innerHTML = quiz.currentQuestion.question;
-    // show quiz progress
+    		// show quiz progress
 		showProgress();
-    // show answers
+    		// show answers
 		showAnswers();
 	}
 
@@ -97,11 +102,10 @@ import { Quiz } from './quiz';
 	}
 
 	fetch(endpoint)
-    .then(resp => resp.json())
-    .then(data => {
-    
-    quiz = new Quiz(data);    
-	btnStart.addEventListener('click',start);
-    });
+	.then(resp => resp.json())
+	.then(data => {
+		quiz = new Quiz(data);    
+		btnStart.addEventListener('click',start);
+	});
     
 })();
