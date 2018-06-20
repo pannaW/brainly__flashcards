@@ -13,7 +13,7 @@ import { Quiz } from './quiz';
 	const btnAnswers = document.querySelectorAll('.jsBtnAnswer');
 
 	let initialQuestionsLength = 0;
-    let quiz = new Object(); 
+    	let quiz = new Object(); 
 
 	function showAnswers(){
 		[...btnAnswers].forEach(btn => {
