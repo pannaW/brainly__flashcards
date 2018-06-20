@@ -1,6 +1,6 @@
 # brainly_flashcards
-Internship challenge
+Internship challenge 2018
 
-## demo
+## Demo
 
- https://pannaw.github.io/brainly_flashcards/
+https://pannaw.github.io/brainly__flashcards/dist/
